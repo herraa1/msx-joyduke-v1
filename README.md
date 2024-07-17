@@ -82,15 +82,17 @@ The Microsoft Xbox Original controller uses 5V for power and logic.
 
 ### Recommended Build
 
-Please, use [msx-joyduke-v1 Build2](#build2) for making new boards if you want something field-tested.
+Please, use [msx-joyduke-v1 Build2](#build2) for making new boards.
 
 ### [Build2](hardware/kicad/msx-joyduke-v1-build2)
 
 [Bill Of Materials (BoM)](https://html-preview.github.io/?url=https://raw.githubusercontent.com/herraa1/msx-joyduke-v1/main/hardware/kicad/msx-joyduke-v1-build2/bom/ibom.html)
 
+This is the first publicly released build of the msx-joyduke adapter.
+
 ## [Firmware](firmware/msx-joyduke-v1/)
 
-The msx-joyduke v1 adapter firmware uses the [USB Host Shield 2.0](https://github.com/felis/USB_Host_Shield_2.0) to read the Microsoft Xbox Original controller status.
+The msx-joyduke v1 adapter firmware uses the [USB Host Shield 2.0 library](https://github.com/felis/USB_Host_Shield_2.0) to read the Microsoft Xbox Original controller status.
 
 The following elements are used as inputs:
 * digital pad (D-Pad), as direction arrows
@@ -124,7 +126,7 @@ Nevertheless, even if the MSX especification puts such a low limit on the curren
 
 Taking that into account, the msx-joyduke adapter has been enabled to be optionally powered by the a MSX general purpose I/O interface port.
 
-To enable powering the msx-joyduke adapter from _Port 1_ or _Port 2_, the switch SW1 _JOYPWR_ must be first turned on by sliding the switch handle to the left.
+To enable powering the msx-joyduke adapter from the _MSX Joystick Port_, the switch SW1 _JOYPWR_ must be first turned on by sliding the switch handle to the left.
 
 > [!NOTE]
 > A [1N5819 SMD Schottky diode](https://www.diodes.com/assets/Datasheets/1N5819HW.pdf) D4 is used to avoid leaking current from the msx-joyduke adapter to the MSX in case the msx-joyduke adapter is powered by USB while the _JOYPWR_ switch is ON.
@@ -142,25 +144,22 @@ In normal operation and for a room temperature of around 25 degrees Celsius, the
 >
 > Remember that the PTCs are provided as a safeguard in case something goes really wrong on the adapter, not to act as an exact current limiter to strictly comply with the 50mA per-port MSX specification.
 
-So **if our MSX computer can safely provide more than 50mA on a MSX general purpose I/O interface** (which is usually the case), we can connect _MSX Joystick Port_ to the MSX computer and turn on the SW1 _JOYPWR_ switch to power the msx-joyduke adapter.
-
-A jumpers JP1 can be used to bypass the PTC protections for _MSX Joystick Port_.
+A jumper JP1 can be used to bypass the PTC protections for the _MSX Joystick Port_.
 
 > [!WARNING]
 > Bypassing the PTC protection may damage your MSX computer.
 > Do not bypass the PTC protections unless you known what you are doing.
 
-By closing JP1 and **if our MSX computer can safely provide more than 85mA on a single MSX general purpose I/O interface**, we can connect _MSX Joystick Port_ to the MSX computer and turn on the SW1 _JOYPWR_ switch to power the msx-joyduke adapter using a single joystick port.
+By closing JP1 and **if our MSX computer can safely provide more than 85mA on a single MSX general purpose I/O interface**, we can connect the _MSX Joystick Port_ to the MSX computer and turn on the SW1 _JOYPWR_ switch to power the msx-joyduke adapter using a single joystick port.
 
 In summary, we can use the following options to power the msx-joyduke adapter (from safest to less safe):
 * via the board USB mini conector
-  * leave open jumper JP1
   * turn off the SW1 _JOYPWR_ switch
   * connect a 5V USB power supply to the board USB mini connector
-* via one MSX general purpose I/O interface, if your MSX can safely provide more than 85mA on each MSX general purpose I/O interface
+* via one of the MSX general purpose I/O interface, if your MSX can safely provide more than 85mA on each MSX general purpose I/O interface
   * close jumper JP1
   * turn on the SW1 _JOYPWR_ switch
-  * connect _MSX Joystick Port_ to a MSX general purpose I/O interface
+  * connect the _MSX Joystick Port_ to a MSX general purpose I/O interface
 
 ## Switches and Buttons
 
@@ -168,8 +167,8 @@ In summary, we can use the following options to power the msx-joyduke adapter (f
 
 | **Switch** | **State**      | **Description**                                                          |
 |------------|----------------|--------------------------------------------------------------------------|
-| _JOYPWR_   | Off            | power from MSX computer via joystick port(s) is off (except logic gates) |
-| _JOYPWR_   | On             | board electronics get power from MSX computer via joystick port(s)       |
+| _JOYPWR_   | Off            | power from MSX computer via a joystick port is off (except logic gates)  |
+| _JOYPWR_   | On             | board electronics get power from MSX computer via a joystick port        |
 
 > [!NOTE]
 > If you plug a +5V USB power supply to the USB mini connector, the adapter will turn on unconditionally irrespective of the _JOYPWR_ switch position.
@@ -191,6 +190,15 @@ In summary, we can use the following options to power the msx-joyduke adapter (f
 | _JoyPort_ | Solid Green    | Xbox controller connected and ready to use |
 | _Fault_   | Off            | no power fault detected |
 | _Fault_   | Solid Yellow   | excess of current detected on the Xbox connector |
+
+## Compatibility Tests
+
+| **Controller**                        | **Compatible** |
+|---------------------------------------|----------------|
+| 045e:0202 Microsoft X-Box pad v1 (US) | YES            |
+| 045e:0289 Microsoft X-Box pad v2 (US) | YES            |
+
+Other Xbox controllers may work but have not been tested.
 
 ## References
 
