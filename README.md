@@ -25,7 +25,8 @@ The msx-joyduke v1 adapter uses an [Atmega328p](https://en.wikipedia.org/wiki/AT
 A two-sided printed circuit board (PCB) is used to put together all components:
 * An Atmega328p as the main MCU working at +3.3V
 * A MAX3421 USB Host Controller with SPI interface
-* An AMS1117-3.3 regulator to convert the 5V from the joystick port to the 3.3V used for the Atmega328p chip and the MAX3421
+* A TPS2051C 500mA current limited switch for the host controller USB port
+* An AMS1117-3.3 regulator to convert the 5V from the joystick or the mini USB port to the 3.3V used by the Atmega328p and the MAX3421 chips
 * Two 74LS03 quad 2-input NAND gates with open collectors to completely mimic the standard MSX joystick behavior
 * A PTC fuse to minimize damage to the MSX computer in case something goes wrong with the board
 * Several additional required components (crystals/resonators, diodes, leds, resistors, ceramic capacitors and alumionium capacitors)
