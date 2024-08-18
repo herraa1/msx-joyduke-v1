@@ -95,6 +95,8 @@ This is the first publicly released build of the msx-joyduke adapter.
 
 The msx-joyduke v1 adapter firmware uses the [USB Host Shield 2.0 library](https://github.com/felis/USB_Host_Shield_2.0) to read the Microsoft Xbox Original controller status.
 
+While developing the firmware, I noticed that some Xbox Original controllers were not working as expected. After a bit of troubleshooting the root cause was found and a [modification](https://github.com/felis/USB_Host_Shield_2.0/commit/b92fa02546dddd2278cd411e5d0e2d2ff614c8d8) to the library has been submitted and merged to fix the problem.
+
 The following elements are used as inputs:
 * digital pad (D-Pad), as direction arrows
 * left and right analog pad as direction arrows
