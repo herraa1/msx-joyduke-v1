@@ -23,7 +23,7 @@ The main features of the msx-joyduke v1 adapter are:
 The msx-joyduke v1 adapter uses an [Atmega328p](https://en.wikipedia.org/wiki/ATmega328) and a [MAX3421](https://www.analog.com/media/en/technical-documentation/data-sheets/max3421e.pdf) to convert the [Microsoft Xbox Original controller USB signalling](https://xboxdevwiki.net/Xbox_Input_Devices#USB_Adapters) to the [MSX joystick standard signalling](https://www.msx.org/wiki/Joystick_control).
 
 A two-sided printed circuit board (PCB) is used to put together all components:
-* An Atmega328p as the main MCU working at +3.3V
+* An Atmega328p as the main MCU working at +3.3V and clocked at 8MHz
 * A MAX3421 USB Host Controller with SPI interface
 * A TPS2051C 500mA current limited switch for the host controller USB port
 * An AMS1117-3.3 regulator to convert the 5V from the joystick or the mini USB port to the 3.3V used by the Atmega328p and the MAX3421 chips
