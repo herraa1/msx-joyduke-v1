@@ -4,6 +4,11 @@
 
 Connect [Microsoft Xbox Original controllers](https://en.wikipedia.org/wiki/Xbox_controller) to [MSX computers](https://www.msx.org/wiki/).
 
+> [!NOTE]
+>
+> No build instructions are yet provided, but if you are brave enough go for the [recommended build](#recommended-build).
+>
+
 ## Introduction
 
 The msx-joyduke v1 is an adapter that allows connecting Microsoft Xbox Original controllers to [MSX general purpose I/O ports](https://www.msx.org/wiki/General_Purpose_port).
